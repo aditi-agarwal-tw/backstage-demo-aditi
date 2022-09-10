@@ -39,9 +39,25 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { twTheme } from '../src/themes/twTheme';
 import { HomePage } from "../src/components/Home/HomePage";
 import { HomepageCompositionRoot } from '@backstage/plugin-home';
+import { githubAuthApiRef } from '@backstage/core-plugin-api';
+import { SignInPage } from '@backstage/core-components';
 
 const app = createApp({
   apis,
+  components: {
+    SignInPage: props => (
+      <SignInPage 
+        {...props}
+        auto
+        provider={{
+          id: 'github-auth-provider',
+          title: 'GitHub',
+          message: 'Sign in using Github',
+          apiRef: githubAuthApiRef,
+        }}
+      />
+    )
+  },
   themes: [{
     id: 'my-theme',
     title: 'My Custom Theme',
