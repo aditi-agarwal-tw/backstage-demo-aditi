@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Route } from 'react-router';
+import { Route } from 'react-router';
 import { apiDocsPlugin, ApiExplorerPage } from '@backstage/plugin-api-docs';
 import {
   CatalogEntityPage,
@@ -41,6 +41,7 @@ import { HomePage } from "../src/components/Home/HomePage";
 import { HomepageCompositionRoot } from '@backstage/plugin-home';
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { SignInPage } from '@backstage/core-components';
+import { HelloPage } from '@internal/plugin-hello';
 
 const app = createApp({
   apis,
@@ -126,6 +127,7 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/hello" element={<HelloPage />}/>
   </FlatRoutes>
 );
 
